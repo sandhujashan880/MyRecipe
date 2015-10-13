@@ -13,11 +13,11 @@ $navbar-default-color: $light-orange;
   float: left;
   margin-right: 10px;
   font-size: 2em;
-  color: #000000;
+  color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: -1;
   padding-top: 9px;
-  font-weight: bold;
+  
 }
 
 #logo:hover{
@@ -44,6 +44,7 @@ body{
   text-align: center;
 }
 
+
 h1,h2,h3,h4{
   line-height: 1;
 }
@@ -62,6 +63,7 @@ h2{
   font-weight: normal;
   color: #777;
 }
+
 .left{
   text-align: left;
   letter-spacing: .5px;
