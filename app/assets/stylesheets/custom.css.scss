@@ -64,6 +64,15 @@ h2{
   color: #777;
 }
 
+h3{
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  
+  font-weight: normal;
+  color: #777;
+}
+
+
 .left{
   text-align: left;
   letter-spacing: .5px;
@@ -73,6 +82,33 @@ h2{
   margin-top: 25px;
   border-top: 1px solid #eaeaea;
   color: #777;
+}
+
+.chef_info{
+  
+margin-top: 10px;
+
+}
+
+.gravatar{
+ border-radius: 10px; 
+  
+}
+
+.headingofrec
+{
+  color: #FF6600;
+}
+
+input, textarea, select, .uneditable-input{
+  border: 1px solid;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input{
+  height: auto !important;
 }
 
 

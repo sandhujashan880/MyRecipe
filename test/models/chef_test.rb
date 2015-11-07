@@ -55,7 +55,7 @@ class ChefTest < ActiveSupport::TestCase
   
   
   test "email should reject be invalid address" do
-   invalid_emails= %w[abc.com abc123.org.com abc@com abc 123 @112. org ]
+   invalid_emails= %w[abc.com abc123.org.com abc@com abc 123 @112.]
    invalid_emails.each do |ia|
      @chef.email = ia
      assert_not @chef.valid?, '#{ia.inspect} is a invalid address'
