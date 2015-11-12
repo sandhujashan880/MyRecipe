@@ -9,6 +9,10 @@
   <div class = "col-md-8">
     <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-warning pull-right" %>
     <h2><%=@recipe.summary%></h2> 
+    <div class= "show_recipe">
+        <%= image_tag(@recipe.picture.url, size: "250x150", class: "gravatar") if @recipe.picture? %>
+      
+    </div>
     <div class="well">
       <p><strong>steps:</strong></p>
       <%= simple_format(@recipe.description) %>
