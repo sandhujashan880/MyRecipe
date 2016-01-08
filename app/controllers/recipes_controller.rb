@@ -1,11 +1,16 @@
 class RecipesController < ApplicationController
   
+  before_action :set_recipe, only: [:update, :edit, :show, :like]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update]
+  
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.paginate(page: params[:page], per_page: 4)
+    
   end
   
   def show
-    @recipe = Recipe.find(params[:id])
+    
   end
   
   def new
@@ -15,7 +20,8 @@ class RecipesController < ApplicationController
   def create
     
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = Chef.find(3)
+    @recipe.chef = current_user
+    
     
     if @recipe.save
       
@@ -29,17 +35,29 @@ class RecipesController < ApplicationController
   end
   
   def edit
-    @recipe = Recipe.find(params[:id])
+    
   end
   
   def update
-    @recipe = Recipe.find(params[:id])
+    
     if @recipe.update(recipe_params)
-      flash[:success]= "your recipe was updates successfully"
+      flash[:success]= "your recipe was updated successfully"
       redirect_to recipe_path(@recipe)
     else
       render :edit
     end
+  end
+  
+  def like
+    
+   like= Like.create(likes: params[:like], chef: current_user, recipe: @recipe)
+    if like.valid?
+    flash[:success]= "your selection was sccessful"
+    redirect_to :back
+  else
+    flash[:danger]= "you can only ike or dislike a recipe once"
+    redirect_to :back
+  end
   end
   
   private
@@ -47,4 +65,23 @@ class RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:name, :summary, :description, :picture)
     end
+    
+    def set_recipe
+      @recipe = Recipe.find(params[:id])
+      
+    end
+    
+    def require_same_user
+        
+        if current_user != @recipe.chef
+          flash[:danger] = "You can edit only your Recipe"
+          redirect_to :back
+        end
+    end
+    
+    
+    
+    
+    
+    
 end

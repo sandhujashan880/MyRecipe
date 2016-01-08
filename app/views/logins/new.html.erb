@@ -1,0 +1,31 @@
+<%= render 'shared/page_title', title: "Login" %>
+<div class="row">
+  <div class="well col-md-8 col-md-offset-2">
+
+    <%= form_tag '/login' do %>
+    <form role="form" class='form-horizontal'>
+      <fieldset>
+        <div class="form-group margin-bottom">
+            <%= label_tag :email, nil, class: "col-lg-2 control-label", for: "inputEmail" %>
+          <div class="col-lg-10 margin-bottom">
+            <%= text_field_tag :email, nil, class: "form-control", id: "inputEmail", placeholder: "Enter your email address." %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :password, nil, class: "col-lg-2 control-label", for: "inputPassword" %>
+          <div class="col-lg-10 margin-bottom">
+            <%= password_field_tag :password, nil, class: "form-control", id: "inputPassword", placeholder: "Enter a password." %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2 margin-bottom">
+            <%= submit_tag 'Login', class: 'btn btn-success btn-raised' %>
+            
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
+</form>
+  </div>
+</div>
