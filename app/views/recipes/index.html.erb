@@ -1,6 +1,14 @@
 
 <h1 class="headingofrec"> <%= render 'shared/page_title', title: 'ALL Recipes' %> </h1>
 <hr/>
+
+<ul class="nav nav-tabs">
+    <li class="active">
+      <%= link_to "Recipe", recipes_path %>  </li>
+      <li>
+      <%= link_to "Chefs", chefs_path %>  </li>
+</ul>
+
     <%= will_paginate %>
     <% @recipes.each do |recipe| %>
     <div class= "row">
