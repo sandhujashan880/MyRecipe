@@ -1,13 +1,13 @@
-CarrierWave.configure do |config|
-  config.root = Rails.root.join('tmp') # adding these...
-  config.cache_dir = 'carrierwave' # ...two lines
-
-  config.fog_credentials = {
-    :provider               => 'AWS',                        # required
-    :s3_access_key_id      => ENV['S3_ACCESS_KEY'],                        # required
-    :s3_secret_access_key  => ENV['S3_SECRET_KEY'],                     # required
+if Rails.env.production?
+  CarrierWave.configure do |config|
+    config.fog_credentials = {
+      :provider => 'AWS',
+      :aws_access_key_id => ENV["AKIAJATK23A3TODW7T6Q"],
+      :aws_secret_access_key => ENV["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"]
+    }
     
-  }
-  config.fog_directory  = ENV['S3_Bucket']                             # required
- 
+    config.fog_directory = ENV['myrecipejashan']
+    
+  end
+  
 end
