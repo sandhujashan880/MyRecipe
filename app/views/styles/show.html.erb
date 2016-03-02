@@ -1,5 +1,5 @@
 
-<h1 class="headingofrec"> <%= render 'shared/page_title', title: 'ALL Recipes' %> </h1>
+<h1 class="headingofrec"> <%= render 'shared/page_title', title: 'Recipes For : '+ @style.name + ' Food'%> </h1>
 <hr/>
 
 <ul class="nav nav-tabs">
@@ -9,8 +9,8 @@
       <%= link_to "Chefs", chefs_path %>  </li>
 </ul>
 
-    <%= will_paginate %>
-    <% @recipes.each do |recipe| %>
+    <%= will_paginate @recipes %>
+    <% @style.recipes.each do |recipe| %>
     <div class= "row">
     <div class= "col-md-2">
         <section class="chef_info_centre">
@@ -46,4 +46,4 @@
     <hr/>
     
 <% end %>
-    <%= will_paginate %>
+    <%= will_paginate @recipes %>
