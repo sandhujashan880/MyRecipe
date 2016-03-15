@@ -1,4 +1,3 @@
-
 <h1 class="headingofrec"> <%= render 'shared/page_title', title: 'ALL Recipes' %> </h1>
 <hr/>
 
@@ -22,8 +21,12 @@
     <div class= "col-lg-6 well">
         <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
         <p><%= recipe.summary %></p>
+        <% if recipe.styles.any? %>
         <p>Styles:<%= render recipe.styles %></p>
+        <% end %>
+        <% if recipe.ingredients.any? %>
          <p>Ingredients:<%= render recipe.ingredients %></p>
+         <% end %>
         <p>
             <span class= 'quiet'><small>created: <%= time_ago_in_words(recipe.created_at) %> ago, </small></span>
              <span class= 'quiet'><small> updated: <%= time_ago_in_words(recipe.updated_at) %> ago</small></span>
