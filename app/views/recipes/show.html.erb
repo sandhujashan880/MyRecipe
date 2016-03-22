@@ -7,9 +7,12 @@
     </p>
   </div>
   <div class = "col-md-8">
-    <% if logged_in? and @recipe.chef == current_user %>
+    <% if logged_in? and (@recipe.chef == current_user || current_user.admin?) %>
     
     <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-warning pull-right" %>
+    <% end %>
+    <% if current_user.admin?  %>
+        <%= link_to "[Delete Recipe]" , @recipe, method: :delete , data: {confirm: "Are you sure?"}  %>
     <% end %>
     <h2><%=@recipe.summary%></h2> 
     <div class= "show_recipe">
